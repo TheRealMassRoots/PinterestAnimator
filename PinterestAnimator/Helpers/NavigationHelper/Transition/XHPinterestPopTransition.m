@@ -18,6 +18,7 @@
     
     UIView *containerView = [transitionContext containerView];
     
+    toViewController.view.frame = fromViewController.view.frame;
     UIView *toView = toViewController.view;
     
     [containerView addSubview:toView];
@@ -83,7 +84,7 @@
         if (finished) {
             [snapShot removeFromSuperview];
             [whiteViewContainer removeFromSuperview];
-            [transitionContext completeTransition:!self.canceled];
+            [transitionContext completeTransition:!transitionContext.transitionWasCancelled];
         }
         
     }];
